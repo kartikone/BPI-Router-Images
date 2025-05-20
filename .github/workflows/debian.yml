@@ -91,11 +91,3 @@ jobs:
           #echo -e "skipkerneldownload=1\nkernelfile=${{ env.R4Kernel }}" > sourcefiles_bpi-r4.conf
           echo -e "userpackages=\"${{ inputs.packages }}\"" >> sourcefiles_bpi-r4.conf
           ./buildimg.sh bpi-r4 ${{ vars.DEBIAN_DIST }}
-
-      - name: Upload to gdrive
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.CREDENTIALS }}
-          filename: "*.img.gz*"
-          folderId: ${{ secrets.FOLDERID }}
-          overwrite: "true" # optional boolean
